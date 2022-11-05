@@ -41,7 +41,7 @@ public class JengaManager : Singleton<JengaManager>
     {
         PauseCanvas.enabled = false;
         poddon= table.transform.GetChild(2).gameObject;
-        startButton.onClick.AddListener(ResumeGame);
+        //startButton.onClick.AddListener(ResumeGame);
         ExitButton.onClick.AddListener(CloseGame);
         poddon.GetComponent<TableTouching>().piecesTouching = -3;
         currentLayer = 0;
@@ -64,7 +64,6 @@ public class JengaManager : Singleton<JengaManager>
 
     public void SpawnJengaPieces()
     {
-        VuforiaRenderer.Instance.Pause(true);
         spawnPoint = table.transform.position + addPoint;
         if (currentLayer < layers)
         {
@@ -79,7 +78,6 @@ public class JengaManager : Singleton<JengaManager>
             currentLayer++;
             Invoke("SpawnJengaPieces", spawnDelay);
         }
-        VuforiaRenderer.Instance.Pause(false);
         gameInProgress = true;
         if (currentLayer == layers)
         {
@@ -140,7 +138,6 @@ public class JengaManager : Singleton<JengaManager>
     }
     public void PauseGame()
     {
-        VuforiaRenderer.Instance.Pause(true);
         Time.timeScale = 0f;
         PauseCanvas.enabled = true;
         canMove = false;
@@ -160,7 +157,6 @@ public class JengaManager : Singleton<JengaManager>
             text.text = "Pause";
             gameInProgress = true;
         }
-        VuforiaRenderer.Instance.Pause(false);
     }
 
     public void CloseGame()
