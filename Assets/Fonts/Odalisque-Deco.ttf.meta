@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d1806adcb2191014bbaba31b1edf1047
+guid: 26611279b8c426048b11afddf5854a5f
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Coiny 2.0
+  - Odalisque Deco
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

@@ -13,7 +13,7 @@ public class RandomFriction : MonoBehaviour
 
     void Start()
     {
-        BoxCollider mainCollider = GetComponent<BoxCollider>();
+        MeshCollider mainCollider = GetComponent<MeshCollider>();
         PhysicMaterial physicMaterial = mainCollider.material;
         physicMaterial.dynamicFriction = Random.Range(minFriction, maxFriction);
         physicMaterial.staticFriction = Random.Range(minFriction, maxFriction);

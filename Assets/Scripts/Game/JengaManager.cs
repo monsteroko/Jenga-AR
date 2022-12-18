@@ -14,11 +14,11 @@ public class JengaManager : Singleton<JengaManager>
     public GameObject jengaPiece;
     public Vector3 addPoint;
     private Vector3 spawnPoint;
-    private float pieceOffsetZ = 0.046f;
-    private float pieceOffsetY = 0.037f;
+    private float pieceOffsetZ = 0.06f;
+    private float pieceOffsetY = 0.04f;
     public int layers = 9;
     private int currentLayer;
-    private float spawnDelay = 0.3f;
+    private float spawnDelay = 0.5f;
     public string jengaPieceTag = "JengaPiece";
     public Button b1;
     public TextMeshProUGUI text;
@@ -29,6 +29,12 @@ public class JengaManager : Singleton<JengaManager>
     public bool isPaused;
     public bool canMove;
     private bool gameInProgress;
+
+
+    [Header(@"AR Objects")]
+    public Camera ARcamera;
+    public GameObject PlaneFinder;
+    public GameObject GroundPlane;
 
     //Pause Stuff
     public Canvas PauseCanvas;
@@ -158,7 +164,18 @@ public class JengaManager : Singleton<JengaManager>
             gameInProgress = true;
         }
     }
-
+    public void SpawnFaced(bool isTracked)
+    {
+        if (isTracked)
+        {
+            /*float yRotation = ARcamera.transform.eulerAngles.y;
+            GroundPlane.transform.eulerAngles = new Vector3(transform.eulerAngles.x, yRotation, transform.eulerAngles.z);*/
+            PlaneFinder.GetComponent<PlaneFinderBehaviour>().OnInteractiveHitTest.RemoveAllListeners();
+            SpawnJengaPieces();
+        }
+        else
+            PlaneFinder.GetComponent<PlaneFinderBehaviour>().OnInteractiveHitTest.AddListener(PlaneFinder.GetComponent<ContentPositioningBehaviour>().PositionContentAtPlaneAnchor);
+    }
     public void CloseGame()
     {
         Application.Quit();
