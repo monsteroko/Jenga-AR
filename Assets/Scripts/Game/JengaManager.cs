@@ -168,8 +168,8 @@ public class JengaManager : Singleton<JengaManager>
     {
         if (isTracked)
         {
-            /*float yRotation = ARcamera.transform.eulerAngles.y;
-            GroundPlane.transform.eulerAngles = new Vector3(transform.eulerAngles.x, yRotation, transform.eulerAngles.z);*/
+            float yRotation = ARcamera.transform.eulerAngles.y;
+            GroundPlane.transform.eulerAngles = new Vector3(transform.eulerAngles.x, yRotation, transform.eulerAngles.z);
             PlaneFinder.GetComponent<PlaneFinderBehaviour>().OnInteractiveHitTest.RemoveAllListeners();
             SpawnJengaPieces();
         }
